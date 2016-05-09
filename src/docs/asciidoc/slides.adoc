@@ -1,0 +1,164 @@
+// Don't center the slides vertically
+:revealjs_center: false
+// Display the current slide number in the bottom right
+:revealjs_slidenumber: true
+// The slide-id is added to the browser-url allowing to reload to the same page
+:revealjs_history: true
+
+== !
+
+ifndef::imagesdir[:imagesdir: images]
+ifndef::javasourcedir[:javasourcedir: ../../main/java]
+ifndef::flexsourcedir[:flexsourcedir: ../../main/flex]
+
+Controlling Cyborgs with Apache Flex
+
+image::flex-logo.png[]
+
+Christofer Dutz <christofer.dutz@codecentric.de>
+
+ApacheCon NA 2016 - Vancouver 2016-05-11
+
+== About Me
+
+image::christofer-dutz.png[float=right]
+
+image::logo-and-name-white.png[float=right]
+
+* Christofer Dutz
+* Senior IT Consultant
+* codecentric AG
+* Apache Member
+* Apache Flex Comitter & PMC
+* Flexmojos Lead Developer
+* Open-Source enthusiast
+
+== Agenda
+
+* What do we need?
+* What parts of Apache Flex can help?
+* Why is Flex so great for building (IoT) applications?
+* Demo
+
+== What do we need?
+
+* Server application a client can talk to
+* Client that talks to the server
+* Logic on the server that talks to the IoT hard/software
+
+== What parts of Apache Flex can help?
+
+* BlazeDS as communication endpoint to any client
+* Flex client as frontend
+
+[NOTE.speaker]
+--
+Actually the IoC Code is the only part that we have to implement
+But we're thinking of a BlazeDS MQTT Messaging Adapter to link Flex Messaging and MQTT together
+--
+
+== Why is Flex so great for building (IoT) applications?
+
+=== On the Server
+
+* BlazeDS-Spring-Boot-Starter
+** Automatically configures the BlazeDS server
+** Using Spring-Flex for configuring the details
+** Activated by providing a "META-INF/flex/services-config.xml"
+
+=== On the Server
+
+* BlazeDS
+** Server-Push with graceful downgrade to long-polling and normal (short) polling
+** Remoting (call method on server)
+** Messaging (JMS-Like publish-subscribe)
+*** JMS integration possible
+** Automatic serialization/deserialization
+** Strongly typed
+
+[NOTE.speaker]
+--
+* Full JMS integration easily configurable
+--
+
+=== On the Server
+
+* Spring-Flex
+** Make Spring bean accessible by annotating with @RemotingDestination
+** Takes care of configuring BlazeDS for Spring
+** Integrates BlazeDS into Spring
+*** Spring Messaging
+*** Spring Security
+*** ...
+
+[NOTE.speaker]
+--
+* Spring-Messaging or default ActionScript Messaging
+--
+
+=== On the client
+
+* Strongly typed model
+* Client-Side model auto-generated from server model
+* Deployable as native application on Android and IOs devices
+* Skinning
+
+[NOTE.speaker]
+--
+* As the client model is generated from the server model they are always in sync
+* Also deployable on Windows, Mac, Linux as native applications or on any platform with Adobe Air runtime
+* Also runable on Browsers, if Flash is enabled.
+--
+
+== Client-Server Communication Example
+
+=== On the Server
+
+[source,java]
+----
+include::{javasourcedir}/de/codecentric/iot/rapiro/movement/MovementService.java[]
+----
+
+[NOTE.speaker]
+--
+* Scroll down the code to see the rest.
+--
+
+=== On the client
+
+* Declaration of the remote service incl. methods and callbacks
+
+[source,java]
+----
+include::{flexsourcedir}/de/codecentric/iot/rapiro/Application.mxml[lines=7..13]
+----
+
+=== On the client
+
+* Calling the remote methods
+[source,java]
+----
+include::{flexsourcedir}/de/codecentric/iot/rapiro/Application.mxml[lines=62]
+----
+[source,java]
+----
+include::{flexsourcedir}/de/codecentric/iot/rapiro/Application.mxml[lines=52..54]
+----
+[source,java]
+----
+include::{flexsourcedir}/de/codecentric/iot/rapiro/Application.mxml[lines=32..34]
+----
+[source,java]
+----
+include::{flexsourcedir}/de/codecentric/iot/rapiro/Application.mxml[lines=40..42]
+----
+
+=== Behind the scenes
+
+plantuml::diagrams/behind-the-scenes.puml[]
+[plantuml,interaction]
+
+== Skinning Example
+
+// TODO: Write this.
+

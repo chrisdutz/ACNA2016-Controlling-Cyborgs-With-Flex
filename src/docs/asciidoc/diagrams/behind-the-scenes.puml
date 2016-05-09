@@ -1,0 +1,8 @@
+@startuml
+User -> Flex: Clicks on a button
+Flex --> BlazeDS: Calls method (AMF)
+BlazeDS --> Service: Invokes method (Java)
+Service --> BlazeDS: Returns result (Java)
+BlazeDS --> Flex: Returns result (AMF)
+Flex --> User: Displays result
+@enduml
