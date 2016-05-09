@@ -23,8 +23,6 @@ ApacheCon NA 2016 - Vancouver 2016-05-11
 
 image::christofer-dutz.png[float=right]
 
-image::logo-and-name-white.png[float=right]
-
 * Christofer Dutz
 * Senior IT Consultant
 * codecentric AG
@@ -35,9 +33,11 @@ image::logo-and-name-white.png[float=right]
 
 == Agenda
 
+image::rapiro.png[float=right]
+
 * What do we need?
 * What parts of Apache Flex can help?
-* Why is Flex so great for building (IoT) applications?
+* Why is Flex so great for IoT?
 * Demo
 
 == What do we need?
@@ -57,9 +57,11 @@ Actually the IoC Code is the only part that we have to implement
 But we're thinking of a BlazeDS MQTT Messaging Adapter to link Flex Messaging and MQTT together
 --
 
-== Why is Flex so great for building (IoT) applications?
+== Why is Flex so great for IoT?
 
 === On the Server
+
+image::spring-boot-logo.png[float=right]
 
 * BlazeDS-Spring-Boot-Starter
 ** Automatically configures the BlazeDS server
@@ -68,8 +70,10 @@ But we're thinking of a BlazeDS MQTT Messaging Adapter to link Flex Messaging an
 
 === On the Server
 
+image::blazeds-logo.jpg[float=right]
+
 * BlazeDS
-** Server-Push with graceful downgrade to long-polling and normal (short) polling
+** Server-Push
 ** Remoting (call method on server)
 ** Messaging (JMS-Like publish-subscribe)
 *** JMS integration possible
@@ -78,6 +82,7 @@ But we're thinking of a BlazeDS MQTT Messaging Adapter to link Flex Messaging an
 
 [NOTE.speaker]
 --
+* Server-Push with graceful downgrade to long-polling and normal (short) polling
 * Full JMS integration easily configurable
 --
 
@@ -159,6 +164,25 @@ plantuml::diagrams/behind-the-scenes.puml[]
 [plantuml,interaction]
 
 == Skinning Example
+
+* Component + Skin
+* Component = functional implementation of control
+* Skin = visual representation (incl. UI logic)
+* Not only for positioning as with CSS in JS/HTML
+* Different usability on touch and desktop
+
+[NOTE.speaker]
+--
+* Skin usually contains the logic for all UI-related operations
+* Component relieved of any non-functional logic
+* Big form on desktop, wizard on mobile
+--
+
+== Demo of the Robot
+
+// TODO: Write this.
+
+== Demo of the Skinning
 
 // TODO: Write this.
 

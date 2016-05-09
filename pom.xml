@@ -23,7 +23,7 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/theme</directory>
+                <directory>src/docs/asciidoc/theme</directory>
                 <filtering>true</filtering>
                 <targetPath>${project.slides.directory}/reveal.js-${revealjs.version}/css/theme</targetPath>
             </resource>
